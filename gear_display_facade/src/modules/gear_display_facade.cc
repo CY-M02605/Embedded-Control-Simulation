@@ -6,10 +6,21 @@
 
 #include "gear_display_facade.h"
 
+// Option 1:
 // using gear_display_facade::GearDisplayFacade;
+//
+// This only brings the class name GearDisplayFacade into the current scope.
+// Other names inside the namespace, such as AcGearPositionSignal,
+// AcIsEcoModeSignal, GearPositionSignal and DriveModeSignal,
+// are still not directly available.
 
-// 
+// Option 2:
 namespace gear_display_facade {
+// 
+// Define the member functions inside the gear_display_facade namespace.
+// This makes all names declared in this namespace directly available here.
+// Therefore, we can write GearDisplayFacade, AcGearPositionSignal,
+// GearPositionSignal, etc. without adding gear_display_facade:: each time.
 
     GearDisplayFacade::GearDisplayFacade(
         const AcGearPositionSignal& ac_gear_position_signal,
