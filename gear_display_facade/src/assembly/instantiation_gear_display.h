@@ -1,10 +1,9 @@
 #if defined(INSTANTIATION_DEFINE) || !defined(INSTANTIATION_GEAR_DISPLAY_H)
 #define INSTANTIATION_GEAR_DISPLAY_H
 
-#include "instantiation.h"
-
 #if defined(INSTANTIATION_DEFINE)
 
+#include "instantiation.h"
 #include "manager.h"
 #include "module_interface.h"
 #include "signal.h"
@@ -12,6 +11,7 @@
 
 #else
 
+// forward declaration
 namespace framework {
 class Manager;
 }
@@ -26,6 +26,8 @@ INSTANTIATION(
     framework::Manager,
     app_manager
 )
+// normal: extern framework::Manager app_manager;
+// definition: framework::Manager app_manager{};
 
 INSTANTIATION(
     gear_display_facade::GearDisplayFacade,
@@ -34,5 +36,11 @@ INSTANTIATION(
     ac_is_eco_mode_signal,
     app_manager
 )
+// normal: extern gear_display_facade::GearDisplayFacade gear_display_facade_module;
+// define: gear_display_facade::GearDisplayFacade gear_display_facade_module{
+//          ac_gear_position_signal,
+//          ac_is_eco_mode_signal,
+//          app_manager
+//         };
 
 #endif
